@@ -45,13 +45,17 @@ ran_params = {
     "n_estimators": [100, 200, 300],
     "criterion": ["gini", "entropy", "log_loss"]
 }
+# print(y_test)
 grid_search = GridSearchCV(RandomForestClassifier(),param_grid=ran_params,verbose=2,cv=5, scoring='accuracy' ,n_jobs=5)
 grid_search.fit(x_train,y_train)
-print(grid_search.best_estimator_)
-print(grid_search.best_score_)
-print(grid_search.best_params_)
+# print(grid_search.best_estimator_)
+# print(grid_search.best_score_)
+# print(grid_search.best_params_)
+
+#proceed
 model = grid_search.best_estimator_
 y_pred_grid = model.predict(x_test)
+# print("predict value = {} true value {}".format(y_pred_grid,y_test[898]))
 print(classification_report(y_test,y_pred_grid))
 # svc(kernal = 'linear')
 #       precision    recall  f1-score   support
